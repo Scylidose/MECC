@@ -1,6 +1,7 @@
 
 <h1 align="center">
   <br>
+<img width="317" alt="Capture d’écran 2023-01-22 à 16 43 06" src="https://user-images.githubusercontent.com/28122432/213942189-b2e31bf3-9d14-4f8a-9d3d-7d92357e4ce9.png">
 
   <br>
   MECC
