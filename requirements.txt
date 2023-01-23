@@ -1,0 +1,8 @@
+Flask==2.2.2
+protobuf==4.21.12
+python-dotenv==0.21.0
+google-api-core==2.11.0
+google-auth==2.15.0
+google-cloud-dialogflow==2.16.1
+googleapis-common-protos==1.57.0
+gunicorn==20.0.4
