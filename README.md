@@ -1,7 +1,8 @@
 
 <h1 align="center">
   <br>
-<img width="317" alt="Capture d’écran 2023-01-22 à 16 43 06" src="https://user-images.githubusercontent.com/28122432/213942189-b2e31bf3-9d14-4f8a-9d3d-7d92357e4ce9.png">
+
+  <img width="317" alt="Capture d’écran 2023-01-22 à 16 43 06" src="https://user-images.githubusercontent.com/28122432/213942189-b2e31bf3-9d14-4f8a-9d3d-7d92357e4ce9.png">
 
   <br>
   MECC
@@ -32,19 +33,35 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 $ git clone https://github.com/Scylidose/MECC
 
 # Go into the repository
-$ cd MECC
+$ cd MECC/
+
+
+# Create virtual environment
+$ python3 -m venv venv
+
+# Activate virtual environment
+$ source ./venv/bin/activate
+
+# Go into the backend repository
+$ cd backend/
+
+# run the Flask app in the background
+./bootstrap.sh &
+
+# Go into the frontend repository
+$ cd ../frontend/
 
 # Install dependencies
 $ npm install
 
-# Run the app
-$ npm start
-```
+# run the Angular application
+$ ng serve
 
+```
 
 ## Download
 
-You can [download]() the latest installable version of MECC for Windows, macOS and Linux.
+You can [download]() the latest installable version of MECC for Windows.
 
 ## License
 
