@@ -7,7 +7,11 @@ import {Chatbot} from './chatbot.model';
   selector: 'chatbot',
   template: `
     <div>
-        {{chatbot.message}}
+        <ul>
+            <li *ngFor="let message of chatbot.messages">
+                {{message}}
+            </li>
+        </ul>
     </div>
   `,
   styleUrls: ['../app.component.less']
@@ -24,6 +28,8 @@ export class ChatbotComponent implements OnInit, OnDestroy {
         .getChatbot()
         .subscribe(res => {
             this.chatbot = res;
+            console.log("--------");
+            console.log(this.chatbot);
           },
           console.error
         );
