@@ -5,6 +5,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -22,6 +23,10 @@
     "lib": [
       "ES2022",
       "dom"
+    ],
+    "allowJs": true,
+    "typeRoots": [
+        "./node_modules/@types"
     ]
   },
   "angularCompilerOptions": {
