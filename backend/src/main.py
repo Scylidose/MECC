@@ -31,16 +31,11 @@ def main():
 
 @app.route('/message', methods=['POST'])
 def add_message():
-    chatbot_object.message = request.get_json()['message']
+    message = request.get_json()['messages']
 
-    new_chatbot = ChatbotSchema().dump(chatbot_object)
+    chatbot_object.post_message(message)
 
-    return jsonify(new_chatbot), 201
-
-@app.route('/response', methods=['POST'])
-def add_response():
-    chatbot_object.message = request.get_json()['response']
-
+    chatbot_object.post_message(chatbot_object.send_response(message))
     new_chatbot = ChatbotSchema().dump(chatbot_object)
 
     return jsonify(new_chatbot), 201
