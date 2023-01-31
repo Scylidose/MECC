@@ -1,32 +1,14 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Subscription} from 'rxjs';
-import {ChatbotApiService} from './chatbot/chatbot-api.service';
-import {Chatbot} from './chatbot/chatbot.model';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `
+    <div style="text-align:center">
+      <h1>MECC</h1>
+      <h4>Miscellaneous Educational Cybersecurity Chatbot</h4>
+    </div>
+    <router-outlet></router-outlet>
+  `,
   styleUrls: ['./app.component.less']
 })
-export class AppComponent implements OnInit, OnDestroy {
-  title = 'app';
-  chatbotListSubs: Subscription;
-  chatbotList: Chatbot;
-
-  constructor(private chatbotApi: ChatbotApiService) {
-  }
-
-  ngOnInit() {
-    this.chatbotListSubs = this.chatbotApi
-      .getChatbot()
-      .subscribe(res => {
-          this.chatbotList = res;
-        },
-        console.error
-      );
-  }
-
-  ngOnDestroy() {
-    this.chatbotListSubs.unsubscribe();
-  }
-}
+export class AppComponent { }
