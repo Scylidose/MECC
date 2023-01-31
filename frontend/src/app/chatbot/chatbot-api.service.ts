@@ -21,4 +21,9 @@ export class ChatbotApiService {
       .get<Chatbot>(`${API_URL}/`).pipe(
       catchError(ChatbotApiService._handleError));
   }
+
+  saveChatbot(chatbot: Chatbot): Observable<any> {
+    return this.http
+      .post(`${API_URL}/message`, chatbot);
+  }
 }
