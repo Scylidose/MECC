@@ -1,0 +1,18 @@
+
+   <div class="container">
+    <div class="card">
+      <div class="chat-list" #chatListContainer>
+        <ng-container *ngFor="let item of chatMessages">
+          <div class="chat-item" [ngClass]="{'right' : item?.user?.id == human.id, 'left': item?.user?.id != human.id}">
+            <p id="message-body">{{item?.message}}</p>
+          </div>
+        </ng-container>
+      </div>
+      <div class="chat-footer">
+        <input matInput id="chat-textarea" (keydown.enter)="saveChatbot()" [(ngModel)]="message" required>
+        <button id="send-button" (click)="saveChatbot()" (keydown.enter)="saveChatbot()" [disabled]="message === ''">
+          send
+        </button>
+      </div>
+    </div>
+   </div>

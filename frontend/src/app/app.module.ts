@@ -1,33 +1,25 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import {AppComponent} from './app.component';
-import {ChatbotApiService} from './chatbot/chatbot-api.service';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import {FormsModule} from "@angular/forms";
 
-import {ChatbotFormComponent} from './chatbot/chatbot-form.component';
-import {RouterModule, Routes} from '@angular/router';
-import {ChatbotComponent} from './chatbot/chatbot.component';
+import { ChatbotApiService } from './chatbot/chatbot-api.service';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
-const appRoutes: Routes = [
-  { path: '', component: ChatbotFormComponent },
-];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ChatbotFormComponent,
-    ChatbotComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(
-      appRoutes,
-    )
-  ],
-  providers: [ChatbotApiService],
-  bootstrap: [AppComponent]
+ declarations: [
+   AppComponent
+ ],
+ imports: [
+   BrowserModule,
+   HttpClientModule,
+   AppRoutingModule,
+   FormsModule
+ ],
+ providers: [ChatbotApiService],
+ bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

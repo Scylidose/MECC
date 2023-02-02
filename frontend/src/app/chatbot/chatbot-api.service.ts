@@ -7,8 +7,10 @@ import {Chatbot} from './chatbot.model';
 
 @Injectable()
 export class ChatbotApiService {
-
+  private url: string;
+  
   constructor(private http: HttpClient) {
+    this.url = `${API_URL}/message`;
   }
 
   private static _handleError(err: HttpErrorResponse | any) {
@@ -20,6 +22,10 @@ export class ChatbotApiService {
     return this.http
       .get<Chatbot>(`${API_URL}/`).pipe(
       catchError(ChatbotApiService._handleError));
+  }
+
+  public send(chatbot: Chatbot): Observable<any> {
+    return this.http.post(this.url, chatbot);
   }
 
   saveChatbot(chatbot: Chatbot): Observable<any> {
