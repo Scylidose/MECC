@@ -20,14 +20,24 @@ export class AppComponent {
 
  @ViewChild('chatListContainer') list?: ElementRef<HTMLDivElement>;
  chatInputMessage: string = "";
- 
+ human = {
+    id: 1
+  }
+
+  bot = {
+    id: 2
+  }
+
  chatMessages: {
+  user: any,
   message: string
 }[] = [
   {
+    user: this.bot,
     message: "Hello I'm MECC or Miscellaneous Educational Cybersecurity Chatbot\n"
   },
   {
+    user: this.bot,
     message: "A chatbot specialized in cybersecurity education and sensibilization."
   }
 ];
@@ -40,7 +50,8 @@ export class AppComponent {
  saveChatbot() {
   this.chatbot.messages = this.message;
   this.chatMessages.push({
-    message:  this.message
+    message:  this.message,
+    user: this.human
   });
   this.chatbotApi.send(this.chatbot).subscribe(data => {
     this.receive(data.messages[data.messages.length - 1]);
@@ -57,7 +68,8 @@ export class AppComponent {
 
 receive(message: string) {
   this.chatMessages.push({
-    message: message
+    message: message,
+    user: this.bot
   });
 this.scrollToBottom()
 }
