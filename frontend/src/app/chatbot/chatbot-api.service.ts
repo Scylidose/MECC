@@ -30,6 +30,6 @@ export class ChatbotApiService {
 
   saveChatbot(chatbot: Chatbot): Observable<any> {
     return this.http
-      .post(`${API_URL}/message`, chatbot);
+      .post(this.url, chatbot);
   }
 }

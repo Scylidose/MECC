@@ -8,9 +8,15 @@ class Chatbot():
 
     def get_messages(self):
         return self.messages
-    
+
+    def clear_message(self):
+        self.messages = []
+
     def post_message(self, message):
-        self.messages.append(message)
+        if isinstance(message, str):
+            self.messages = self.messages + [message]
+        else:
+            self.messages = self.messages + message
 
     def detect_intent(self, text):
         fullfilment_text = self.dialogflow_client.detect_intent_texts(text)
