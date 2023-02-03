@@ -8,6 +8,14 @@
           </div>
         </ng-container>
       </div>
+      <div class="quick-replies-item">
+        <button class="quick-replies-body">Phishing</button>
+        <button class="quick-replies-body">Ransomware</button>
+      </div>
+      <div class="quick-replies-item">
+        <button class="quick-replies-body">Data storage</button>
+        <button class="quick-replies-body">Authentification</button>
+      </div>
       <div class="chat-footer">
         <input matInput id="chat-textarea" (keydown.enter)="saveChatbot()" [(ngModel)]="message" required>
         <button id="send-button" (click)="saveChatbot()" (keydown.enter)="saveChatbot()" [disabled]="message === ''">
