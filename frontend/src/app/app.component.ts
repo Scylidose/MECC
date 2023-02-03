@@ -13,7 +13,7 @@ export class AppComponent {
  message = "";
 
  chatbot = {
-     messages: "",
+     messages: [""],
  };
 
  constructor(private chatbotApi: ChatbotApiService, private router: Router) { }
@@ -48,13 +48,13 @@ export class AppComponent {
 
 
  saveChatbot() {
-  this.chatbot.messages = this.message;
+  this.chatbot.messages = [this.message];
   this.chatMessages.push({
     message:  this.message,
     user: this.human
   });
   this.chatbotApi.send(this.chatbot).subscribe(data => {
-    this.receive(data.messages[data.messages.length - 1]);
+    this.receive(data.messages);
   });
   this.chatbotApi
     .saveChatbot(this.chatbot)
@@ -66,11 +66,15 @@ export class AppComponent {
   this.scrollToBottom()
 }
 
-receive(message: string) {
-  this.chatMessages.push({
-    message: message,
-    user: this.bot
-  });
+receive(messages: Array<string>) {
+  for(let i=0; i<messages.length; i++){
+    if(messages[i] != ""){
+      this.chatMessages.push({
+        message: messages[i],
+        user: this.bot
+      });
+    }
+  }
 this.scrollToBottom()
 }
  scrollToBottom() {

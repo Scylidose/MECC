@@ -1,5 +1,5 @@
 export class Chatbot {
     constructor(
-      public messages: string
+      public messages: Array<string>
     ) { }
   }
