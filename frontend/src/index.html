@@ -9,5 +9,13 @@
 </head>
 <body>
   <app-root></app-root>
+  <script>
+    function clearQuickReply() {
+        let quickReply = document.querySelectorAll('.quick-replies-item');
+        quickReply.forEach(reply=> {
+            reply.remove();
+        });
+    }
+  </script>
 </body>
 </html>
