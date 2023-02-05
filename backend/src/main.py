@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 
 from .entities.dialogflow import DialogflowMECC
+from .entities.quiz import QuizMECC
 from .entities.chatbot import Chatbot, ChatbotSchema
 
 from flask_cors import CORS
@@ -18,7 +19,8 @@ app = Flask(__name__)
 CORS(app)
 
 dialogflow_client = DialogflowMECC(DIALOGFLOW_PROJECT_ID, DIALOGFLOW_SESSION_ID, DIALOGFLOW_LANGUAGE_CODE)
-chatbot_object = Chatbot(dialogflow_client)
+quiz_object = QuizMECC()
+chatbot_object = Chatbot(dialogflow_client, quiz_object)
 
 @app.route('/')
 def main():
