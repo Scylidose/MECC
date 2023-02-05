@@ -2,6 +2,10 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ChatbotApiService} from "./chatbot/chatbot-api.service";
 import {Router} from "@angular/router";
 
+interface Dictionary<T> {
+  [Key: string]: T;
+}
+
 @Component({
  selector: 'app-root',
  templateUrl: './app.component.html',
@@ -13,7 +17,7 @@ export class AppComponent {
  message = "";
 
  chatbot = {
-     messages: [""],
+     messages: [{"df_type":"", "text":""}],
  };
 
  constructor(private chatbotApi: ChatbotApiService, private router: Router) { }
@@ -30,15 +34,21 @@ export class AppComponent {
 
  chatMessages: {
   user: any,
-  message: string
+  message: string,
+  quick_replies: any,
+  type: string
 }[] = [
   {
     user: this.bot,
-    message: "Hello I'm MECC or Miscellaneous Educational Cybersecurity Chatbot\n"
+    message: "Hello I'm MECC or Miscellaneous Educational Cybersecurity Chatbot\n",
+    quick_replies: [],
+    type: "text"
   },
   {
     user: this.bot,
-    message: "A chatbot specialized in cybersecurity education and sensibilization."
+    message: "A chatbot specialized in cybersecurity education and sensibilization.",
+    quick_replies: [],
+    type: "text"
   }
 ];
 
@@ -48,12 +58,15 @@ export class AppComponent {
 
 
  saveChatbot() {
-  this.chatbot.messages = [this.message];
+  this.chatbot.messages = [{"df_type":"text", "text":this.message}];
   this.chatMessages.push({
     message:  this.message,
-    user: this.human
+    quick_replies: [],
+    user: this.human,
+    type: "text"
   });
   this.chatbotApi.send(this.chatbot).subscribe(data => {
+    console.log("-----------> ", data.messages);
     this.receive(data.messages);
   });
   this.chatbotApi
@@ -65,14 +78,50 @@ export class AppComponent {
   this.chatInputMessage = ""
   this.scrollToBottom()
 }
+replaceInput(quick_reply: string) { 
+  console.log("REPLY : ", quick_reply);
+  this.chatbot.messages = [{"df_type":"text", "text":quick_reply}];
+  this.chatMessages.push({
+    message:  quick_reply,
+    quick_replies: [],
+    user: this.human,
+    type: "text"
+  });
+  this.chatbotApi.send(this.chatbot).subscribe(data => {
+    console.log("-----------> ", data.messages);
+    this.receive(data.messages);
+  });
+  this.chatbotApi
+    .saveChatbot(this.chatbot)
+    .subscribe(
+      () => this.router.navigate(['/']),
+      error => alert(error.message)
+    );
+  this.chatInputMessage = ""
+  this.scrollToBottom()
+ };
 
 receive(messages: Array<string>) {
   for(let i=0; i<messages.length; i++){
-    if(messages[i] != ""){
-      this.chatMessages.push({
-        message: messages[i],
-        user: this.bot
-      });
+    messages[i] = messages[i].replace(/'/g, '"');
+    var dict_message =JSON.parse(messages[i]);
+    if(dict_message.text != ""){
+      console.log("---> ..", dict_message);
+      if(dict_message['df_type'] == 'text'){
+        this.chatMessages.push({
+          message: dict_message['text'],
+          quick_replies: [],
+          user: this.bot,
+          type: dict_message['df_type']
+        });
+      } else if(dict_message['df_type'] == 'quick_replies'){
+        this.chatMessages.push({
+          message: dict_message['text'],
+          quick_replies: dict_message['quick_replies'],
+          user: this.bot,
+          type: dict_message['df_type']
+        });
+      }
     }
   }
 this.scrollToBottom()

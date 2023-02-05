@@ -32,7 +32,9 @@
             "styles": [
               "src/styles.less"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/script.js"
+            ]
           },
           "configurations": {
             "production": {
