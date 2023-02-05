@@ -13,7 +13,7 @@ class Chatbot():
         self.messages = []
 
     def post_message(self, message):
-        if isinstance(message, str):
+        if isinstance(message, dict):
             self.messages = self.messages + [message]
         else:
             self.messages = self.messages + message
