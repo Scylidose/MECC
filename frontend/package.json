@@ -5,11 +5,14 @@
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build",
-    "heroku-postbuild": "ng build",
+    "heroku-postbuild": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
-  "engines": { "node": "14.20.0", "npm": "6.14.17" },
+  "engines": {
+    "node": "14.20.0",
+    "npm": "6.14.17"
+  },
   "private": true,
   "dependencies": {
     "-": "0.0.1",
