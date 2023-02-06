@@ -14,8 +14,15 @@ class DataLeakMECC():
         self.manipulation_answers = manipulation_answers
 
     def get_from_scyllaDB(self):
-        output = sub.check_output("h8mail -t " + self.email + " -c h8mail_config.ini",
-                                shell=True).decode("utf8",).split("\n")
+
+        output = None
+
+        try:
+            output = sub.check_output(["h8mail", "-t",self.email,"-c", "../h8mail_config.ini"])
+        except sub.CalledProcessError as e:
+            output = e.output
+        
+        output = output.decode("utf8",).split("\n")
 
         count = 0
         start_count = 0
