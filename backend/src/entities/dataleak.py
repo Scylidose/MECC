@@ -21,9 +21,8 @@ class DataLeakMECC():
             print("EMAIL : ", self.email)
             output = sub.check_output(["h8mail", "-t",self.email,"-c", "/app/backend/h8mail_config.ini"])
         except sub.CalledProcessError as e:
-            print("ERROR")
             output = e.output
-        print("OUTPUT ", output)
+
         output = output.decode("utf8",).split("\n")
 
         count = 0
