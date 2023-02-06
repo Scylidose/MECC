@@ -1,9 +1,9 @@
 from dotenv import load_dotenv
 
-from .entities.dialogflow import DialogflowMECC
-from .entities.quiz import QuizMECC
-from .entities.dataleak import DataLeakMECC
-from .entities.chatbot import Chatbot, ChatbotSchema
+from entities.dialogflow import DialogflowMECC
+from entities.quiz import QuizMECC
+from entities.dataleak import DataLeakMECC
+from entities.chatbot import Chatbot, ChatbotSchema
 
 from flask_cors import CORS
 from flask import Flask, jsonify, request
