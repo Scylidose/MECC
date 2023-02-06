@@ -9,7 +9,7 @@ class DialogflowMECC:
         self.session_id = session_id
         self.language_code = language_code
         self.dataleak_object = dataleak_object
-        self.answers = {"answer":[]}
+        self.answers = {"answer": []}
 
     def get_answers(self):
         return self.answers["answer"]
@@ -23,7 +23,8 @@ class DialogflowMECC:
 
         session = session_client.session_path(self.project_id, self.session_id)
         if text:
-            text_input = dialogflow.TextInput(text=text, language_code=self.language_code)
+            text_input = dialogflow.TextInput(text=text,
+                                              language_code=self.language_code)
 
             query_input = dialogflow.QueryInput(text=text_input)
 
@@ -35,7 +36,7 @@ class DialogflowMECC:
 
             if "quiz" in intent:
                 if "start" in intent:
-                    self.answers["region"] =  text
+                    self.answers["region"] = text
                 if text != "Start the quiz":
                     self.answers["answer"].append(text)
 
@@ -61,10 +62,10 @@ class DialogflowMECC:
                 if "q2" in intent:
                     gend = gender.Detector()
                     sex = gend.get_gender(name=text)
-                    self.answers["sex"] =  sex
-                    self.answers["name"] =  text
+                    self.answers["sex"] = sex
+                    self.answers["name"] = text
                 if "q3" in intent:
-                    self.answers["age"] =  text
+                    self.answers["age"] = text
 
                 elements = response.query_result.fulfillment_messages
                 res = []
@@ -73,10 +74,10 @@ class DialogflowMECC:
                     res.append(df_res)
 
                 if "finish" in intent:
-                    self.answers["email"] =  text
-                    manipulation_results = self.answers
+                    self.answers["email"] = text
+                    manip_res = self.answers
 
-                    self.dataleak_object.post_manipulation_answers(manipulation_results)
+                    self.dataleak_object.post_manipulation_answers(manip_res)
                     credentials = self.dataleak_object.getAnswers()
 
                     df_res = self.create_df_response(
@@ -114,9 +115,10 @@ class DialogflowMECC:
                 df_response["text"] = element.text.text[0]
 
             if element.quick_replies.title:
+                quick = element.quick_replies.quick_replies
                 df_response["df_type"] = "quick_replies"
                 df_response["text"] = element.quick_replies.title
-                df_response["quick_replies"] = element.quick_replies.quick_replies
+                df_response["quick_replies"] = quick
 
         if res_type == "manipulation":
             if element.text.text:

@@ -3,6 +3,7 @@ from emailrep import EmailRep
 import random
 import re
 
+
 class DataLeakMECC():
 
     def __init__(self, emailrep_token, manipulation_answers):
@@ -18,7 +19,12 @@ class DataLeakMECC():
         email = self.manipulation_answers["email"]
 
         try:
-            output = sub.check_output(["h8mail", "-t",email,"-c", "/app/backend/h8mail_config.ini"])
+            output = sub.check_output(
+                        ["h8mail",
+                         "-t",
+                         email,
+                         "-c",
+                         "/app/backend/h8mail_config.ini"])
         except sub.CalledProcessError as e:
             output = e.output
 
@@ -28,7 +34,7 @@ class DataLeakMECC():
         start_count = 0
         end_count = 0
         breach = []
-        
+
         ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
 
         for line in output:
@@ -45,14 +51,15 @@ class DataLeakMECC():
             breach.append(ansi_escape.sub('', output[i].split(">")[-1]))
 
         if len(breach) > 0:
-            response = f"Found {len(breach)} informations leak according to leaklookup page\nHeres a few random website :\n"
+            response = f"Found {len(breach)} informations leak according " \
+                        "to leaklookup page\nHeres a few random website :\n"
             for index, leak in enumerate(breach):
                 if index < 6:
                     response += f"{leak}\n"
         else:
-            response = "No informations seems to have leaked according to leaklookup page.\nCongrats!"
+            response = "No informations seems to have leaked according " \
+                       "to leaklookup page.\nCongrats!"
         return response
-
 
     def getAnswers(self):
         manipulation_answers = self.manipulation_answers
@@ -71,7 +78,9 @@ class DataLeakMECC():
         scylla_res = self.get_from_scyllaDB()
 
         res = scylla_res
-        
-        res = f" Name: {name} \nAge: {age} \nRegion: {region} \nE-mail: {email} \nDo you change your password often : {change_password}\n\nBut I also recovered more data about you, such as :\nGender: {sex}\n" + res
 
+        res = f" Name: {name} \nAge: {age} \nRegion: {region} \n" \
+              f"E-mail: {email} \nDo you change your password " \
+              f"often : {change_password}\nBut I also recovered " \
+              f"more data about you, such as :\nGender: {sex}\n" + res
         return res

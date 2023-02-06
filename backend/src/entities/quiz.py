@@ -22,10 +22,14 @@ class QuizMECC:
 
     def calculate_score(self):
 
-        true_answer = ["Nope", "True", "Change Passwords", "False", "False", "True", "123456",
-                    "Of Course !", "False", "All Of The Above", "No I can't", "False", "True", "No", "Humans"]
-        topic_list = ["password", "data_save", "phishing", "ransomware", "ransomware", "ransomware", "password",
-                    "password", "data_save", "social", "data_save", "social", "phishing", "phishing", "social"]
+        true_answer = ["Nope", "True", "Change Passwords", "False",
+                       "False", "True", "123456", "Of Course !", "False",
+                       "All Of The Above", "No I can't", "False", "True",
+                       "No", "Humans"]
+        topic_list = ["password", "data_save", "phishing", "ransomware",
+                      "ransomware", "ransomware", "password", "password",
+                      "data_save", "social", "data_save", "social",
+                      "phishing", "phishing", "social"]
 
         self.score = {
             "password": 3,
@@ -58,7 +62,8 @@ class QuizMECC:
         self.calculate_score()
 
         topic_list = ["secubot.train.passwords1", "secubot.train.datasave1",
-                    "secubot.train.phishing1", "secubot.train.ransomware1", "secubot.train.social1"]
+                      "secubot.train.phishing1", "secubot.train.ransomware1",
+                      "secubot.train.social1"]
 
         intent_phrase = ""
 

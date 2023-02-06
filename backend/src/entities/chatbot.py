@@ -1,5 +1,6 @@
 from marshmallow import Schema, fields
 
+
 class Chatbot():
 
     def __init__(self, dialogflow_client, quiz_object):
@@ -44,7 +45,7 @@ class Chatbot():
         response = self.dialogflow_client.parse_query_output(fullfilment_text)
 
         return response
-    
+
 
 class ChatbotSchema(Schema):
     messages = fields.List(fields.Str())
