@@ -19,7 +19,7 @@
 </p>
 
 <h1 align="center">
-<img width="529" alt="MECC image" src="https://github.com/Scylidose/Machine_Learning_Projects/tree/master/img/mecc.png">
+<img width="529" alt="MECC image" src="https://user-images.githubusercontent.com/28122432/217105313-b49e15b3-7a12-4c39-bc2e-0b9a4e3195c3.png">
 </h1>
 
 ## Key Features
@@ -84,7 +84,7 @@ $ ng serve
 
 ## Download
 
-You can [download](https://github.com/Scylidose/MECC/archive/refs/heads/master.zip) the latest installable version of MECC.
+You can [download](https://github.com/Scylidose/MECC/archive/refs/tags/v1.0.0.zip) the latest installable version of MECC.
 
 ## License
 
