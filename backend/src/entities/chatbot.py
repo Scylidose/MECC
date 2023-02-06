@@ -27,12 +27,13 @@ class Chatbot():
 
     def detect_intent(self, text):
         text = text[0]
-        if text == "Yes, teach me !":
+        if text == "Yes, teach me !" or text == "Im not interested":
             answers = self.dialogflow_client.get_answers()
             if len(answers) > 15:
                 del answers[1::2]
             self.quiz_object.saveAnswers(answers)
-            text = self.quiz_object.analyze_answer()
+            if text == "Yes, teach me !":
+                text = self.quiz_object.analyze_answer()
 
         fullfilment_text = self.dialogflow_client.detect_intent_texts(text)
 
