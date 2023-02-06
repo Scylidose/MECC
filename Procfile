@@ -1,1 +1,1 @@
-web: gunicorn --chdir backend/src main:app & node frontend/server.js
+web: gunicorn --chdir backend/src main:app & sh -c 'cd ./frontend/ && npm start'
