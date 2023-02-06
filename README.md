@@ -24,11 +24,29 @@
 
 ## Key Features
 
-* 
+* Take a quiz to see how much you know about cybersecurity
+* Cybersecurity teacher on various themes.
+* Senzibilization on data shared online.
 
 ## How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. 
+
+### Setting up environment variable
+
+Create an `.env` file in the `backend/` folder based on the `.env.template` file.
+
+You have to define : 
+
+- DIALOGFLOW_PROJECT_ID -> ID of the dialogflow app for your chatbot
+- DIALOGFLOW_SESSION_ID -> Random string 
+- DIALOGFLOW_LANGUAGE_CODE -> Set up to the preferred language
+
+Learn more [here](https://cloud.google.com/dialogflow/es/docs/quick/setup?hl=fr)
+
+### Starting the app
+
+From a first command line:
 
 ```bash
 # Clone this repository
@@ -36,7 +54,6 @@ $ git clone https://github.com/Scylidose/MECC
 
 # Go into the repository
 $ cd MECC/
-
 
 # Create virtual environment
 $ python3 -m venv venv
@@ -49,9 +66,13 @@ $ cd backend/
 
 # run the Flask app in the background
 ./bootstrap.sh &
+```
 
+From another command line:
+
+```bash
 # Go into the frontend repository
-$ cd ../frontend/
+$ cd frontend/
 
 # Install dependencies
 $ npm install
@@ -63,7 +84,7 @@ $ ng serve
 
 ## Download
 
-You can [download]() the latest installable version of MECC for Windows.
+You can [download](https://github.com/Scylidose/MECC/archive/refs/heads/master.zip) the latest installable version of MECC.
 
 ## License
 
