@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 
 from .entities.dialogflow import DialogflowMECC
 from .entities.quiz import QuizMECC
+from .entities.dataleak import DataLeakMECC
 from .entities.chatbot import Chatbot, ChatbotSchema
 
 from flask_cors import CORS
@@ -15,11 +16,14 @@ DIALOGFLOW_PROJECT_ID = os.environ["DIALOGFLOW_PROJECT_ID"]
 DIALOGFLOW_SESSION_ID = os.environ["DIALOGFLOW_SESSION_ID"]
 DIALOGFLOW_LANGUAGE_CODE = os.environ["DIALOGFLOW_LANGUAGE_CODE"]
 
+EMAILREP_TOKEN = os.getenv('EMAILREP_TOKEN')
+
 app = Flask(__name__)
 CORS(app)
 
-dialogflow_client = DialogflowMECC(DIALOGFLOW_PROJECT_ID, DIALOGFLOW_SESSION_ID, DIALOGFLOW_LANGUAGE_CODE)
+dataleak_object = DataLeakMECC("", EMAILREP_TOKEN, [])
 quiz_object = QuizMECC()
+dialogflow_client = DialogflowMECC(DIALOGFLOW_PROJECT_ID, DIALOGFLOW_SESSION_ID, DIALOGFLOW_LANGUAGE_CODE, dataleak_object)
 chatbot_object = Chatbot(dialogflow_client, quiz_object)
 
 @app.route('/')
