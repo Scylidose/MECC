@@ -75,15 +75,9 @@ class DialogflowMECC:
                 if "finish" in intent:
                     self.answers["email"] =  text
                     manipulation_results = self.answers
-                    print("MANIPULATION : ", manipulation_results)
+
                     self.dataleak_object.post_manipulation_answers(manipulation_results)
-                    quiz_results = manipulation_results["answer"]
-
-                    print("QUIZ RESULTS ", quiz_results)
-
                     credentials = self.dataleak_object.getAnswers()
-
-                    print("CREDENTIALS ", credentials)
 
                     df_res = self.create_df_response(
                         credentials, "text")

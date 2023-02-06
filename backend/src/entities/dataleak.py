@@ -61,8 +61,6 @@ class DataLeakMECC():
         if quiz_answers and quiz_answers[7] == "Of course not !":
             change_password = "False"
 
-        print(f" Name: {name} \nAge: {age} \nRegion: {region} \nE-mail: {email} \nDo you change your password often : {change_password}\n\nBut I also recovered more data about you, such as :\nGender: {sex}\n")
-
         scylla_res = self.get_from_scyllaDB()
 
         res = scylla_res
