@@ -5,8 +5,7 @@ import re
 
 class DataLeakMECC():
 
-    def __init__(self, email, emailrep_token, manipulation_answers):
-        self.email = email
+    def __init__(self, emailrep_token, manipulation_answers):
         self.emailrep_token = emailrep_token
         self.manipulation_answers = manipulation_answers
 
@@ -16,10 +15,11 @@ class DataLeakMECC():
     def get_from_scyllaDB(self):
 
         output = None
+        email = self.manipulation_answers["email"]
 
         try:
-            print("EMAIL : ", self.email)
-            output = sub.check_output(["h8mail", "-t",self.email,"-c", "/app/backend/h8mail_config.ini"])
+            print("EMAIL : ", email)
+            output = sub.check_output(["h8mail", "-t",email,"-c", "/app/backend/h8mail_config.ini"])
         except sub.CalledProcessError as e:
             output = e.output
 

@@ -21,7 +21,7 @@ EMAILREP_TOKEN = os.getenv('EMAILREP_TOKEN')
 app = Flask(__name__)
 CORS(app)
 
-dataleak_object = DataLeakMECC("", EMAILREP_TOKEN, [])
+dataleak_object = DataLeakMECC(EMAILREP_TOKEN, [])
 quiz_object = QuizMECC()
 dialogflow_client = DialogflowMECC(DIALOGFLOW_PROJECT_ID, DIALOGFLOW_SESSION_ID, DIALOGFLOW_LANGUAGE_CODE, dataleak_object)
 chatbot_object = Chatbot(dialogflow_client, quiz_object)
