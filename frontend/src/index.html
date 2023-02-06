@@ -16,6 +16,17 @@
             reply.remove();
         });
     }
+
+    function handleKeyPress(e){
+      var key=e.keyCode || e.which;
+        if (key==13){
+          clearInput();
+        }
+    }
+
+    function clearInput() {
+      document.getElementById("chat-textarea").value=''
+    }
   </script>
 </body>
 </html>

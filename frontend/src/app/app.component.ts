@@ -97,6 +97,7 @@ receive(messages: Array<string>) {
   for(let i=0; i<messages.length; i++){
     messages[i] = messages[i].replace(/'/g, '"');
     var dict_message =JSON.parse(messages[i]);
+
     if(dict_message.text != ""){
       if(dict_message['df_type'] == 'text'){
         if(dict_message['text'].match(/youtube\.com/)) {
@@ -104,7 +105,7 @@ receive(messages: Array<string>) {
           var videoURL = '//www.youtube.com/embed/'+ videoId;
           dict_message['text'] = this._sanitizer.bypassSecurityTrustResourceUrl(videoURL);
           dict_message['df_type'] = "youtube_link"
-        }     
+        }
         this.chatMessages.push({
           message: dict_message['text'],
           quick_replies: [],
