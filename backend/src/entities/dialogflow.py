@@ -32,7 +32,7 @@ class DialogflowMECC:
             )
 
             intent = response.query_result.intent.display_name
-            print("----> INTENT ", intent)
+
             if "quiz" in intent:
                 if "start" in intent:
                     self.answers["region"] =  text
@@ -73,7 +73,6 @@ class DialogflowMECC:
                     res.append(df_res)
 
                 if "finish" in intent:
-                    print("TEXT ", text)
                     self.answers["email"] =  text
                     manipulation_results = self.answers
 

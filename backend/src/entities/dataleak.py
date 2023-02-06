@@ -18,7 +18,6 @@ class DataLeakMECC():
         email = self.manipulation_answers["email"]
 
         try:
-            print("EMAIL : ", email)
             output = sub.check_output(["h8mail", "-t",email,"-c", "/app/backend/h8mail_config.ini"])
         except sub.CalledProcessError as e:
             output = e.output
