@@ -1,1 +1,1 @@
-web: gunicorn --chdir backend/src main:app & sh -c 'ls -all'
+web: sh -c 'cd ./frontend/ && npm start'
