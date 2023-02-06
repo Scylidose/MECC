@@ -18,7 +18,7 @@ class DataLeakMECC():
         output = None
 
         try:
-            output = sub.check_output(["h8mail", "-t",self.email,"-c", "../../h8mail_config.ini"])
+            output = sub.check_output(["h8mail", "-t",self.email,"-c", "/app/backend/h8mail_config.ini"])
         except sub.CalledProcessError as e:
             output = e.output
         
