@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const API_URL = 'http://localhost:5000';","map":{"version":3,"mappings":"AAAA,OAAO,MAAMA,OAAO,GAAG,uBAAuB","names":["API_URL"],"sourceRoot":"","sources":["/Users/jordisaleilles/Desktop/MECC/MECC/frontend/src/app/env.ts"],"sourcesContent":["export const API_URL = 'http://localhost:5000';\n"]},"metadata":{},"sourceType":"module","externalDependencies":[]}

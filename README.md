@@ -1,70 +1,27 @@
+# Mecc
 
-<h1 align="center">
-  <br>
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
 
-  <img width="317" alt="Capture d’écran 2023-01-22 à 16 43 06" src="https://user-images.githubusercontent.com/28122432/213942189-b2e31bf3-9d14-4f8a-9d3d-7d92357e4ce9.png">
+## Development server
 
-  <br>
-  MECC
-  <br>
-</h1>
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-<h3 align="center">Miscellaneous Educational Cybersecurity Chatbot.</h3>
-<h4 align="center">Specialized chatbot for cybersecurity education and sensibilization.</h4>
-<p align="center">
-  <a href="#key-features">Key Features</a> •
-  <a href="#how-to-use">How To Use</a> •
-  <a href="#download">Download</a> •
-  <a href="#license">License</a>
-</p>
+## Code scaffolding
 
-<h1 align="center">
-<img width="529" alt="Capture d’écran 2023-02-02 à 17 57 48" src="https://user-images.githubusercontent.com/28122432/216470220-cc47d3f4-65c3-4bbe-9a24-1c25fd69cb19.png">
-</h1>
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Key Features
+## Build
 
-* 
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## How To Use
+## Running unit tests
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-```bash
-# Clone this repository
-$ git clone https://github.com/Scylidose/MECC
+## Running end-to-end tests
 
-# Go into the repository
-$ cd MECC/
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Further help
 
-# Create virtual environment
-$ python3 -m venv venv
-
-# Activate virtual environment
-$ source ./venv/bin/activate
-
-# Go into the backend repository
-$ cd backend/
-
-# run the Flask app in the background
-./bootstrap.sh &
-
-# Go into the frontend repository
-$ cd ../frontend/
-
-# Install dependencies
-$ npm install
-
-# run the Angular application
-$ ng serve
-
-```
-
-## Download
-
-You can [download]() the latest installable version of MECC for Windows.
-
-## License
-
-MIT
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
