@@ -1,6 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ChatbotApiService} from "./chatbot/chatbot-api.service";
 import {Router} from "@angular/router";
+import { DomSanitizer } from '@angular/platform-browser';
 
 interface Dictionary<T> {
   [Key: string]: T;
@@ -20,7 +21,7 @@ export class AppComponent {
      messages: [{"df_type":"", "text":""}],
  };
 
- constructor(private chatbotApi: ChatbotApiService, private router: Router) { }
+ constructor(private chatbotApi: ChatbotApiService, private router: Router, private _sanitizer: DomSanitizer) { }
 
  @ViewChild('chatListContainer') list?: ElementRef<HTMLDivElement>;
  chatInputMessage: string = "";
@@ -40,13 +41,7 @@ export class AppComponent {
 }[] = [
   {
     user: this.bot,
-    message: "Hello I'm MECC or Miscellaneous Educational Cybersecurity Chatbot\n",
-    quick_replies: [],
-    type: "text"
-  },
-  {
-    user: this.bot,
-    message: "A chatbot specialized in cybersecurity education and sensibilization.",
+    message: "Hey!",
     quick_replies: [],
     type: "text"
   }
@@ -66,7 +61,6 @@ export class AppComponent {
     type: "text"
   });
   this.chatbotApi.send(this.chatbot).subscribe(data => {
-    console.log("-----------> ", data.messages);
     this.receive(data.messages);
   });
   this.chatbotApi
@@ -79,7 +73,6 @@ export class AppComponent {
   this.scrollToBottom()
 }
 replaceInput(quick_reply: string) { 
-  console.log("REPLY : ", quick_reply);
   this.chatbot.messages = [{"df_type":"text", "text":quick_reply}];
   this.chatMessages.push({
     message:  quick_reply,
@@ -88,7 +81,6 @@ replaceInput(quick_reply: string) {
     type: "text"
   });
   this.chatbotApi.send(this.chatbot).subscribe(data => {
-    console.log("-----------> ", data.messages);
     this.receive(data.messages);
   });
   this.chatbotApi
@@ -105,9 +97,15 @@ receive(messages: Array<string>) {
   for(let i=0; i<messages.length; i++){
     messages[i] = messages[i].replace(/'/g, '"');
     var dict_message =JSON.parse(messages[i]);
+
     if(dict_message.text != ""){
-      console.log("---> ..", dict_message);
       if(dict_message['df_type'] == 'text'){
+        if(dict_message['text'].match(/youtube\.com/)) {
+          const videoId = this.getId(dict_message['text']);
+          var videoURL = '//www.youtube.com/embed/'+ videoId;
+          dict_message['text'] = this._sanitizer.bypassSecurityTrustResourceUrl(videoURL);
+          dict_message['df_type'] = "youtube_link"
+        }
         this.chatMessages.push({
           message: dict_message['text'],
           quick_replies: [],
@@ -125,6 +123,15 @@ receive(messages: Array<string>) {
     }
   }
 this.scrollToBottom()
+}
+
+getId(url: string) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+
+  return (match && match[2].length === 11)
+    ? match[2]
+    : null;
 }
  scrollToBottom() {
    const maxScroll = this.list?.nativeElement.scrollHeight;

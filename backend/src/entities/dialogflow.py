@@ -4,12 +4,12 @@ import gender_guesser.detector as gender
 
 class DialogflowMECC:
 
-    def __init__(self, project_id, session_id, language_code):
+    def __init__(self, project_id, session_id, language_code, dataleak_object):
         self.project_id = project_id
         self.session_id = session_id
         self.language_code = language_code
+        self.dataleak_object = dataleak_object
         self.answers = {"answer":[]}
-        self.bot_mode = "normal"
 
     def get_answers(self):
         return self.answers["answer"]
@@ -36,7 +36,6 @@ class DialogflowMECC:
             if "quiz" in intent:
                 if "start" in intent:
                     self.answers["region"] =  text
-                    self.bot_mode = "normal"
                 if text != "Start the quiz":
                     self.answers["answer"].append(text)
 
@@ -75,11 +74,13 @@ class DialogflowMECC:
 
                 if "finish" in intent:
                     self.answers["email"] =  text
-
-                    self.bot_mode = "normal"
                     manipulation_results = self.answers
+
+                    self.dataleak_object.post_manipulation_answers(manipulation_results)
+                    credentials = self.dataleak_object.getAnswers()
+
                     df_res = self.create_df_response(
-                        manipulation_results, "text")
+                        credentials, "text")
                     res.append(df_res)
 
                 return res

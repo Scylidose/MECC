@@ -4,18 +4,21 @@
       <div class="chat-list" #chatListContainer>
         <ng-container *ngFor="let item of chatMessages">
           <div class="chat-item" [ngClass]="{'right' : item?.user?.id == human.id, 'left': item?.user?.id != human.id}">
-            <p id="message-body">{{item?.message}}</p>
+            <p *ngIf="item?.type==='text' || item?.type==='quick_replies'" id="message-body">{{item?.message}}</p>
+            <iframe *ngIf="item?.type==='youtube_link'" [src]='item?.message' frameborder="0" allowfullscreen></iframe>
           </div>
         </ng-container>
       </div>
       <ng-container *ngFor="let item of chatMessages">
-        <div class="quick-replies-item" *ngFor="let quick_reply of item?.quick_replies">
-          <button class="quick-replies-body" (click)="replaceInput(quick_reply)" onclick="clearQuickReply()">{{quick_reply}}</button>
+        <div class="quick-replies-list">
+          <div class="quick-replies-item" *ngFor="let quick_reply of item?.quick_replies">
+            <button class="quick-replies-body" (click)="replaceInput(quick_reply)" onclick="clearQuickReply()">{{quick_reply}}</button>
+          </div>
         </div>
       </ng-container>
       <div class="chat-footer">
-        <input matInput id="chat-textarea" (keydown.enter)="saveChatbot()" [(ngModel)]="message" required>
-        <button id="send-button" (click)="saveChatbot()" (keydown.enter)="saveChatbot()" [disabled]="message === ''">
+        <input matInput id="chat-textarea" onkeypress="handleKeyPress(event)" (keydown.enter)="saveChatbot()" [(ngModel)]="message" required>
+        <button id="send-button" (click)="saveChatbot()" (keydown.enter)="saveChatbot()" onclick="clearInput()" [disabled]="message === ''">
           send
         </button>
       </div>
