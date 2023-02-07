@@ -18,6 +18,8 @@
   <a href="#license">License</a>
 </p>
 
+<h2 align="center">If available, you can discuss with MECC <a href="https://mecc.herokuapp.com/">here</a>.</h2>
+
 <h1 align="center">
 <img width="529" alt="MECC image" src="https://user-images.githubusercontent.com/28122432/217105313-b49e15b3-7a12-4c39-bc2e-0b9a4e3195c3.png">
 </h1>
