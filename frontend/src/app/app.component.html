@@ -29,10 +29,19 @@
       </div>
     </div>
     <div class="card panel" id="right-panel">
+      <h2 class="panel-title" *ngIf="chatYoutube[0]">Videos</h2>
       <div class="chat-list" #chatListContainer>
         <ng-container *ngFor="let item of chatYoutube">
           <div class="chat-item">
             <iframe [src]='item?.message' frameborder="0" allowfullscreen></iframe>
+          </div>
+        </ng-container>
+      </div>
+      <h2 style="margin-bottom:10px" class="panel-title">Useful links</h2>
+      <div id="listUsefulLink" #chatListContainer>
+        <ng-container *ngFor="let item of chatUsefulLink">
+          <div class="chat-item">
+              <h3 style="text-align:center;margin-bottom: 5px;"><a [href]="item['link']" target="_blank">{{item['title']}}</a></h3>
           </div>
         </ng-container>
       </div>
