@@ -29,9 +29,12 @@
       </div>
     </div>
     <div class="card panel" id="right-panel">
-      <div>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis faucibus mi sed aliquam. Etiam ac lectus porta, iaculis neque tempor, suscipit orci. Phasellus pulvinar viverra nunc, eu lacinia enim pharetra ut. Proin pulvinar mauris porta ligula congue, sit amet mollis ipsum imperdiet. Sed placerat tincidunt orci id dignissim. Sed congue blandit nibh et rutrum. Vivamus id diam scelerisque, auctor nisi eget, rutrum nisl. Pellentesque sed mi gravida, elementum nulla a, rutrum augue. Donec nec imperdiet libero, eget feugiat quam. Donec condimentum leo in lacinia malesuada. Sed in ex sem. Cras non efficitur nulla, et laoreet libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus id erat vitae turpis auctor aliquet eget et nisl.
-        </p>
+      <div class="chat-list" #chatListContainer>
+        <ng-container *ngFor="let item of chatYoutube">
+          <div class="chat-item">
+            <iframe [src]='item?.message' frameborder="0" allowfullscreen></iframe>
+          </div>
+        </ng-container>
       </div>
     </div>
     </div>

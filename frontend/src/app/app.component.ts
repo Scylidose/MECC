@@ -24,6 +24,7 @@ export class AppComponent {
  constructor(private chatbotApi: ChatbotApiService, private router: Router, private _sanitizer: DomSanitizer) { }
 
  @ViewChild('chatListContainer') list?: ElementRef<HTMLDivElement>;
+
  chatInputMessage: string = "";
  human = {
     id: 1
@@ -32,6 +33,10 @@ export class AppComponent {
   bot = {
     id: 2
   }
+
+  chatYoutube: {
+    message: string
+  }[] = []
 
  chatMessages: {
   user: any,
@@ -104,14 +109,18 @@ receive(messages: Array<string>) {
           const videoId = this.getId(dict_message['text']);
           var videoURL = '//www.youtube.com/embed/'+ videoId;
           dict_message['text'] = this._sanitizer.bypassSecurityTrustResourceUrl(videoURL);
-          dict_message['df_type'] = "youtube_link"
+          
+          this.chatYoutube.push({
+            message: dict_message['text']
+          })
+        } else {
+          this.chatMessages.push({
+            message: dict_message['text'],
+            quick_replies: [],
+            user: this.bot,
+            type: dict_message['df_type']
+          });
         }
-        this.chatMessages.push({
-          message: dict_message['text'],
-          quick_replies: [],
-          user: this.bot,
-          type: dict_message['df_type']
-        });
       } else if(dict_message['df_type'] == 'quick_replies'){
         this.chatMessages.push({
           message: dict_message['text'],
