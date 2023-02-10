@@ -1,5 +1,10 @@
-<script>alert("test");</script>
    <div class="container">
+    <div class="card panel" id="left-panel">
+        <div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis faucibus mi sed aliquam. Etiam ac lectus porta, iaculis neque tempor, suscipit orci. Phasellus pulvinar viverra nunc, eu lacinia enim pharetra ut. Proin pulvinar mauris porta ligula congue, sit amet mollis ipsum imperdiet. Sed placerat tincidunt orci id dignissim. Sed congue blandit nibh et rutrum. Vivamus id diam scelerisque, auctor nisi eget, rutrum nisl. Pellentesque sed mi gravida, elementum nulla a, rutrum augue. Donec nec imperdiet libero, eget feugiat quam. Donec condimentum leo in lacinia malesuada. Sed in ex sem. Cras non efficitur nulla, et laoreet libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus id erat vitae turpis auctor aliquet eget et nisl.
+          </p>
+        </div>
+    </div>
     <div class="card">
       <div class="chat-list" #chatListContainer>
         <ng-container *ngFor="let item of chatMessages">
@@ -23,4 +28,23 @@
         </button>
       </div>
     </div>
-   </div>
+    <div class="card panel" id="right-panel">
+      <h2 class="panel-title" *ngIf="chatYoutube[0]">Videos</h2>
+      <div class="chat-list" #chatListContainer>
+        <ng-container *ngFor="let item of chatYoutube">
+          <div class="chat-item">
+            <iframe [src]='item?.message' frameborder="0" allowfullscreen></iframe>
+          </div>
+        </ng-container>
+      </div>
+      <h2 style="margin-bottom:10px" class="panel-title">Useful links</h2>
+      <div id="listUsefulLink" #chatListContainer>
+        <ng-container *ngFor="let item of chatUsefulLink">
+          <div class="chat-item">
+              <h3 style="text-align:center;margin-bottom: 5px;"><a [href]="item['link']" target="_blank">{{item['title']}}</a></h3>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    </div>
+
