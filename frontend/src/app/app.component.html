@@ -1,9 +1,15 @@
    <div class="container">
     <div class="card panel" id="left-panel">
-        <div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque mattis faucibus mi sed aliquam. Etiam ac lectus porta, iaculis neque tempor, suscipit orci. Phasellus pulvinar viverra nunc, eu lacinia enim pharetra ut. Proin pulvinar mauris porta ligula congue, sit amet mollis ipsum imperdiet. Sed placerat tincidunt orci id dignissim. Sed congue blandit nibh et rutrum. Vivamus id diam scelerisque, auctor nisi eget, rutrum nisl. Pellentesque sed mi gravida, elementum nulla a, rutrum augue. Donec nec imperdiet libero, eget feugiat quam. Donec condimentum leo in lacinia malesuada. Sed in ex sem. Cras non efficitur nulla, et laoreet libero. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus id erat vitae turpis auctor aliquet eget et nisl.
-          </p>
-        </div>
+      <ng-container *ngIf="chatQuizResults">
+          <p>Data storage : {{ chatQuizResults.score.data_save }} / 5</p>
+          <p>Password : {{ chatQuizResults.score.password }} / 5</p>
+          <p>Phishing : {{ chatQuizResults.score.phishing }} / 5</p>
+          <p>Ransomware : {{ chatQuizResults.score.ransomware }} / 5</p>
+          <p>Social Engineering : {{ chatQuizResults.score.social }} / 5</p>
+      </ng-container>
+      <ng-container *ngFor="let item of chatQuizResults.quiz_results; let i = index" >
+        <p>Question {{ i }} : <ng-container *ngIf="item == 'False'">❌</ng-container><ng-container *ngIf="item == 'True'">✓</ng-container></p>
+    </ng-container>
     </div>
     <div class="card">
       <div class="chat-list" #chatListContainer>

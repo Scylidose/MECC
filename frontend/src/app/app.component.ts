@@ -34,6 +34,16 @@ export class AppComponent {
     id: 2
   }
 
+  chatQuizResults: {
+    quiz_results: Array<string>,
+    score: any,
+    topic_list: Array<string>
+  } = {
+    quiz_results: [],
+    score: {},
+    topic_list: []
+  }
+
   chatYoutube: {
     message: string
   }[] = []
@@ -101,6 +111,7 @@ export class AppComponent {
       error => alert(error.message)
     );
   this.chatInputMessage = ""
+
   this.scrollToBottom()
 }
 
@@ -121,9 +132,18 @@ replaceInput(quick_reply: string) {
       () => this.router.navigate(['/']),
       error => alert(error.message)
     );
-  this.chatInputMessage = ""
+  this.chatInputMessage = "";
 
-  this.scrollToBottom()
+  this.scrollToBottom();
+
+  if(quick_reply == "Humans" || 
+     quick_reply == "A weak encryption" ||
+     quick_reply == "Short passwords"){
+    this.chatbotApi.getResults().subscribe(data => {
+      this.chatQuizResults = data
+    });
+  }
+
  };
 
 
