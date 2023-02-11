@@ -7,8 +7,8 @@
           <p>Ransomware : {{ chatQuizResults.score.ransomware }} / 5</p>
           <p>Social Engineering : {{ chatQuizResults.score.social }} / 5</p>
       </ng-container>
-      <ng-container *ngFor="let item of chatQuizResults.quiz_results; let i = index" >
-        <p>Question {{ i }} : <ng-container *ngIf="item == 'False'">❌</ng-container><ng-container *ngIf="item == 'True'">✓</ng-container></p>
+      <ng-container *ngFor="let item of chatQuizResults.quiz_result; let i = index" >
+        <p>Q{{ i+1 }} : <ng-container *ngIf="item == 'False'">❌</ng-container><ng-container *ngIf="item == 'True'">✓</ng-container></p>
     </ng-container>
     </div>
     <div class="card">

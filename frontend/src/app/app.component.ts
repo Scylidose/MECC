@@ -35,11 +35,11 @@ export class AppComponent {
   }
 
   chatQuizResults: {
-    quiz_results: Array<string>,
+    quiz_result: Array<string>,
     score: any,
     topic_list: Array<string>
   } = {
-    quiz_results: [],
+    quiz_result: [],
     score: {},
     topic_list: []
   }
@@ -123,6 +123,7 @@ replaceInput(quick_reply: string) {
     user: this.human,
     type: "text"
   });
+
   this.chatbotApi.send(this.chatbot).subscribe(data => {
     this.receive(data.messages);
   });
