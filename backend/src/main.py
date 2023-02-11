@@ -40,6 +40,13 @@ def main():
         return jsonify(chatbot)
 
 
+@app.route('/quiz_results', methods=['GET'])
+def get_quiz_results():
+
+    quiz_results = quiz_object.get_results()
+
+    return quiz_results
+
 @app.route('/message', methods=['POST'])
 def add_message():
     message = [request.get_json()['messages'][0]['text']]

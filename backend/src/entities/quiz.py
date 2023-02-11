@@ -20,6 +20,52 @@ class QuizMECC:
     def initializeQuiz(self):
         self.answers = []
 
+    def get_results(self):
+
+        true_answer = ["Nope", "True", "Change Passwords", "False",
+                       "False", "True", "123456", "Of Course !", "False",
+                       "All Of The Above", "No I can't", "False", "True",
+                       "No", "Humans"]
+        topic_list = ["password", "data_save", "phishing", "ransomware",
+                      "ransomware", "ransomware", "password", "password",
+                      "data_save", "social", "data_save", "social",
+                      "phishing", "phishing", "social"]
+
+        self.score = {
+            "password": 3,
+            "data_save": 3,
+            "phishing": 3,
+            "ransomware": 3,
+            "social": 3,
+            "global_score": 0
+        }
+
+        results = {
+            "score":{},
+            "topic_list": [],
+            "quiz_result":[]
+        }
+        quiz_result = []
+
+        quiz_answers = self.answers
+
+        if not quiz_answers:
+            quiz_answers = []
+
+        for i, answer in enumerate(quiz_answers):
+            if i < 15:
+                if true_answer[i] != answer:
+                    quiz_result.append("False")
+                    self.score[topic_list[i]] -= 1
+                else:
+                    quiz_result.append("True")
+
+        results["score"] = self.score
+        results["quiz_result"] = quiz_result
+        results["topic_list"] = topic_list
+
+        return results
+
     def calculate_score(self):
 
         true_answer = ["Nope", "True", "Change Passwords", "False",
