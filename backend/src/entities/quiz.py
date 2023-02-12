@@ -22,9 +22,9 @@ class QuizMECC:
 
     def get_results(self):
 
-        true_answer = ["Nope", "True", "Change Passwords", "False",
-                       "False", "True", "123456", "Of Course !", "False",
-                       "All Of The Above", "No I can't", "False", "True",
+        true_answer = ["Nope", "True", "Change Passwords", "It wont",
+                       "I dont pay", "True", "123456", "Of Course !", "False",
+                       "All Of The Above", "No I cant", "False", "True",
                        "No", "Humans"]
         topic_list = ["password", "data_save", "phishing", "ransomware",
                       "ransomware", "ransomware", "password", "password",
@@ -43,7 +43,8 @@ class QuizMECC:
         results = {
             "score":{},
             "topic_list": [],
-            "quiz_result":[]
+            "quiz_result":[],
+            "true_answer": []
         }
         quiz_result = []
 
@@ -63,14 +64,15 @@ class QuizMECC:
         results["score"] = self.score
         results["quiz_result"] = quiz_result
         results["topic_list"] = topic_list
+        results["true_answer"] = true_answer
 
         return results
 
     def calculate_score(self):
 
-        true_answer = ["Nope", "True", "Change Passwords", "False",
-                       "False", "True", "123456", "Of Course !", "False",
-                       "All Of The Above", "No I can't", "False", "True",
+        true_answer = ["Nope", "True", "Change Passwords", "It wont",
+                       "I dont pay", "True", "123456", "Of Course !", "False",
+                       "All Of The Above", "No I cant", "False", "True",
                        "No", "Humans"]
         topic_list = ["password", "data_save", "phishing", "ransomware",
                       "ransomware", "ransomware", "password", "password",
