@@ -42,9 +42,7 @@ def main():
 
 @app.route('/quiz_results', methods=['GET'])
 def get_quiz_results():
-
     quiz_results = quiz_object.get_results()
-
     return quiz_results
 
 @app.route('/message', methods=['POST'])
