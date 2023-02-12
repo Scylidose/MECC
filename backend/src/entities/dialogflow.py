@@ -39,6 +39,8 @@ class DialogflowMECC:
                     self.answers["region"] = text
                 if text != "Start the quiz":
                     self.answers["answer"].append(text)
+                else:
+                    self.answers["answer"] = []
 
                 elements = response.query_result.fulfillment_messages
                 res = []

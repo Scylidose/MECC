@@ -32,6 +32,7 @@ class Chatbot():
             answers = self.dialogflow_client.get_answers()
             if len(answers) > 15:
                 del answers[1::2]
+
             self.quiz_object.saveAnswers(answers)
             if text == "Yes, teach me !":
                 text = self.quiz_object.analyze_answer()
