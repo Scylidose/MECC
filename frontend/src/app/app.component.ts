@@ -37,11 +37,13 @@ export class AppComponent {
   chatQuizResults: {
     quiz_result: Array<string>,
     score: any,
-    topic_list: Array<string>
+    topic_list: Array<string>,
+    true_answer: Array<string>
   } = {
     quiz_result: [],
     score: {},
-    topic_list: []
+    topic_list: [],
+    true_answer: []
   }
 
   chatYoutube: {
@@ -137,14 +139,12 @@ replaceInput(quick_reply: string) {
 
   this.scrollToBottom();
 
-  if(quick_reply == "Humans" || 
-     quick_reply == "A weak encryption" ||
-     quick_reply == "Short passwords"){
+  if(quick_reply == "Yes, teach me !" ||
+     quick_reply == "Im not interested"){
     this.chatbotApi.getResults().subscribe(data => {
       this.chatQuizResults = data
     });
   }
-
  };
 
 
