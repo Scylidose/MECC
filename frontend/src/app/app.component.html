@@ -21,6 +21,11 @@
             <iframe *ngIf="item?.type==='youtube_link'" [src]='item?.message' frameborder="0" allowfullscreen></iframe>
           </div>
         </ng-container>
+        <div id="wave">
+          <span class="dot one"></span>
+          <span class="dot two"></span>
+          <span class="dot three"></span>
+        </div>
       </div>
       <ng-container *ngFor="let item of chatMessages">
         <div class="quick-replies-list">
