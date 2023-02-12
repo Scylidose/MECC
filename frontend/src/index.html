@@ -15,6 +15,18 @@
         quickReply.forEach(reply=> {
             reply.remove();
         });
+
+        let wave = document.querySelectorAll('#wave');
+
+        wave.forEach(dots=> {
+            dots.style.display = 'block';
+        });
+
+        setTimeout(()=>{
+          wave.forEach(dots=> {
+            dots.style.display = 'none';
+        });
+        }, 2500);
     }
 
     function handleKeyPress(e){
@@ -25,7 +37,19 @@
     }
 
     function clearInput() {
-      document.getElementById("chat-textarea").value=''
+      document.getElementById("chat-textarea").value='';
+
+      let wave = document.querySelectorAll('#wave');
+
+      wave.forEach(dots=> {
+          dots.style.display = 'block';
+      });
+
+      setTimeout(()=>{
+        wave.forEach(dots=> {
+          dots.style.display = 'none';
+      });
+      }, 2500);
     }
   </script>
 </body>
