@@ -72,7 +72,7 @@ class DataLeakMECC():
         sex = manipulation_answers.get("sex")
         change_password = "True"
 
-        if quiz_answers and quiz_answers[7] == "Of course not !":
+        if quiz_answers and quiz_answers[7] == "I dont think so":
             change_password = "False"
 
         scylla_res = self.get_from_scyllaDB()
