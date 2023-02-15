@@ -1,0 +1,43 @@
+{
+    "true_answer": [
+        "Nope",
+        "True",
+        "Change Passwords",
+        "It wont",
+        "I dont pay",
+        "True",
+        "123456",
+        "Of Course !",
+        "False",
+        "All Of The Above",
+        "No I cant",
+        "False",
+        "True",
+        "No",
+        "Humans"
+    ],
+    "topic_list": [
+        "password",
+        "data_save",
+        "phishing",
+        "ransomware",
+        "ransomware",
+        "ransomware",
+        "password",
+        "password",
+        "data_save",
+        "social",
+        "data_save",
+        "social",
+        "phishing",
+        "phishing",
+        "social"
+    ],
+    "topic_intent": [
+        "mecc.train.passwords1",
+        "mecc.train.datasave1",
+        "mecc.train.phishing1",
+        "mecc.train.ransomware1",
+        "mecc.train.social1"
+    ]
+}
