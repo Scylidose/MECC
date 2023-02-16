@@ -1,3 +1,7 @@
+import json
+
+f = open('./config/answers.json')
+
 
 class QuizMECC:
 
@@ -5,6 +9,7 @@ class QuizMECC:
         self.score = []
         self.answers = []
         self.global_score = 0
+        self.data = json.load(f)
 
     def saveQuizAnswer(self, msg):
         if not self.answers:
@@ -22,14 +27,8 @@ class QuizMECC:
 
     def get_results(self):
 
-        true_answer = ["Nope", "True", "Change Passwords", "It wont",
-                       "I dont pay", "True", "123456", "Of Course !", "False",
-                       "All Of The Above", "No I cant", "False", "True",
-                       "No", "Humans"]
-        topic_list = ["password", "data_save", "phishing", "ransomware",
-                      "ransomware", "ransomware", "password", "password",
-                      "data_save", "social", "data_save", "social",
-                      "phishing", "phishing", "social"]
+        true_answer = self.data['true_answer']
+        topic_list = self.data['topic_list']
 
         self.score = {
             "password": 3,
@@ -70,14 +69,8 @@ class QuizMECC:
 
     def calculate_score(self):
 
-        true_answer = ["Nope", "True", "Change Passwords", "It wont",
-                       "I dont pay", "True", "123456", "Of Course !", "False",
-                       "All Of The Above", "No I cant", "False", "True",
-                       "No", "Humans"]
-        topic_list = ["password", "data_save", "phishing", "ransomware",
-                      "ransomware", "ransomware", "password", "password",
-                      "data_save", "social", "data_save", "social",
-                      "phishing", "phishing", "social"]
+        true_answer = self.data['true_answer']
+        topic_list = self.data['topic_list']
 
         self.score = {
             "password": 3,
@@ -109,9 +102,7 @@ class QuizMECC:
     def analyze_answer(self):
         self.calculate_score()
 
-        topic_list = ["secubot.train.passwords1", "secubot.train.datasave1",
-                      "secubot.train.phishing1", "secubot.train.ransomware1",
-                      "secubot.train.social1"]
+        topic_list = self.data['topic_intent']
 
         intent_phrase = ""
 
@@ -120,7 +111,7 @@ class QuizMECC:
             self.scores) if x == min(self.scores) and x != 3]
 
         if len(min_index) == len(topic_list) or len(min_index) == 0:
-            intent_phrase = "secubot.train.all1"
+            intent_phrase = "mecc.train.all1"
         else:
             intent_phrase = topic_list[min_index[0]]
 
