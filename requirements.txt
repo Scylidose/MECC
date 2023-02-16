@@ -40,5 +40,5 @@ six==1.16.0
 smmap==5.0.0
 stevedore==4.1.1
 urllib3==1.26.14
-Werkzeug==2.2.2
+Werkzeug==2.2.3
 zipp==3.12.0
