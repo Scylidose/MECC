@@ -26,9 +26,11 @@
 
 ## Key Features
 
-* Take a quiz to see how much you know about cybersecurity
+* Take a quiz to see how much you know about cybersecurity and see your weaknesses.
 * Cybersecurity teacher on various themes.
+* Text and video capsule to learn more about cybersecurity.
 * Senzibilization on data shared online.
+* Display usefull ressources about protecting personal data.
 
 ## How To Use
 
