@@ -63,6 +63,7 @@ class QuizMECC:
         results["score"] = self.score
         results["quiz_result"] = quiz_result
         results["topic_list"] = topic_list
+        results["user_answer"] = quiz_answers
         results["true_answer"] = true_answer
 
         return results
