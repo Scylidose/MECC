@@ -2,18 +2,18 @@
     <div class="card panel" id="left-panel">
       <ng-container *ngIf="chatQuizResults.quiz_result[0]">
           <h2 class="panel-title">Results</h2>
-          <p><b>Data storage</b> : {{ chatQuizResults.score.data_save }} / 3</p>
-          <p><b>Password</b> : {{ chatQuizResults.score.password }} / 3</p>
-          <p><b>Phishing</b> : {{ chatQuizResults.score.phishing }} / 3</p>
-          <p><b>Ransomware</b> : {{ chatQuizResults.score.ransomware }} / 3</p>
-          <p><b>Social Engineering</b> : {{ chatQuizResults.score.social }} / 3</p>
       </ng-container>
+      <div class="chat-list">
       <ng-container *ngFor="let item of chatQuizResults.quiz_result; let i = index" >
-        <p>Q{{ i+1 }} : <ng-container *ngIf="item == 'False'">❌</ng-container><ng-container *ngIf="item == 'True'">✓</ng-container></p>
-        <p>Answer : {{chatQuizResults.true_answer[i]}}</p>
+        <div class="question correct" [ngClass]="{'correct' : item == 'True', 'incorrect': item == 'False'}">
+          <p>Question {{ i+1 }}</p>
+          <p>Answer: {{chatQuizResults.user_answer[i]}}</p>
+          <p class="true-answer">True answer: {{chatQuizResults.true_answer[i]}}</p>
+        </div>
       </ng-container>
     </div>
-    <div class="card">
+    </div>
+    <div class="card" id="chatbot">
       <div class="chat-list" #chatListContainer>
         <ng-container *ngFor="let item of chatMessages">
           <div class="chat-item" [ngClass]="{'right' : item?.user?.id == human.id, 'left': item?.user?.id != human.id}">
@@ -37,26 +37,28 @@
       <div class="chat-footer">
         <input matInput id="chat-textarea" onkeypress="handleKeyPress(event)" (keydown.enter)="saveChatbot()" [(ngModel)]="message" required>
         <button id="send-button" (click)="saveChatbot()" (keydown.enter)="saveChatbot()" onclick="clearInput()" [disabled]="message === ''">
-          send
+          SEND
         </button>
       </div>
     </div>
     <div class="card panel" id="right-panel">
       <h2 class="panel-title" *ngIf="chatYoutube[0]">Videos</h2>
-      <div class="chat-list" #chatListContainer>
+      <div class="chat-list" #videoListContainer>
         <ng-container *ngFor="let item of chatYoutube">
           <div class="chat-item">
             <iframe [src]='item?.message' frameborder="0" allowfullscreen></iframe>
           </div>
         </ng-container>
       </div>
-      <h2 style="margin-bottom:10px" class="panel-title">Useful links</h2>
-      <div id="listUsefulLink" #chatListContainer>
+      <h2 class="panel-title">Useful links</h2>
+      <div id="listUsefulLink" class="useful-links">
+        <ul>
         <ng-container *ngFor="let item of chatUsefulLink">
-          <div class="chat-item">
-              <h3 style="text-align:center;margin-bottom: 5px;"><a [href]="item['link']" target="_blank">{{item['title']}}</a></h3>
-          </div>
+          <li class="chat-item">
+            <a [href]="item['link']" target="_blank">{{item['title']}}</a>
+          </li>
         </ng-container>
+        </ul>
       </div>
     </div>
     </div>
