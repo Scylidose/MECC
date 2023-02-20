@@ -1,6 +1,6 @@
 import json
 
-f = open('./config/answers.json')
+f = open('/app/backend/config/answers.json')
 
 
 class QuizMECC:
