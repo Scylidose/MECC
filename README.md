@@ -99,7 +99,7 @@ $ ng serve
 
 ## Download
 
-You can [download](https://github.com/Scylidose/MECC/archive/refs/tags/v1.0.0.zip) the latest installable version of MECC.
+You can [download](https://github.com/Scylidose/MECC/archive/refs/tags/v2.0.0.zip) the latest installable version of MECC.
 
 ## License
 
