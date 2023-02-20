@@ -16,7 +16,7 @@
 <h2 align="center">If available, you can discuss with MECC <a href="https://mecc.herokuapp.com/">here</a>.</h2>
 
 <h1 align="center">
-<img width="800" alt="MECC image" src="https://user-images.githubusercontent.com/28122432/219983501-d92fb29f-521b-4962-b754-cd751bdbb223.png">
+<img width="800" alt="MECC image" src="https://user-images.githubusercontent.com/28122432/220011878-d60605aa-b438-4d79-92f8-85af25ab05fd.png">
 </h1>
 
 ## Key Features
@@ -31,7 +31,8 @@
   <li><h3>Cybersecurity teacher on various themes.</h3></li>
 
   <li><h3>Text and video capsule to learn more about cybersecurity.</h3></li>
-      <img width="1253" alt="Capture d’écran 2023-02-19 à 18 57 57" src="https://user-images.githubusercontent.com/28122432/219983683-71d7bbfe-a166-4180-ad33-5fb197c24da8.png">
+  
+  <img width="1253" alt="Capture d’écran 2023-02-19 à 18 57 57" src="https://user-images.githubusercontent.com/28122432/220011878-d60605aa-b438-4d79-92f8-85af25ab05fd.png">
 
   <li><h3>Senzibilization on data shared online.</h3></li>
   <img width="1257" alt="Capture d’écran 2023-02-19 à 19 16 46" src="https://user-images.githubusercontent.com/28122432/219984199-63a36e89-464a-4e5c-8f4f-db53c3498977.png">
