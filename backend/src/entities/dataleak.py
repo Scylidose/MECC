@@ -2,7 +2,7 @@ import subprocess as sub
 from emailrep import EmailRep
 import random
 import re
-
+import json
 
 class DataLeakMECC():
 
@@ -24,38 +24,26 @@ class DataLeakMECC():
                          "-t",
                          email,
                          "-c",
-                         "/app/backend/h8mail_config.ini"])
+                         "/app/backend/h8mail_config.ini",
+                         "-j",
+                         "/app/backend/OUTPUT_JSON.json"])
         except sub.CalledProcessError as e:
             output = e.output
+    
+        f = open('/app/backend/OUTPUT_JSON.json')
+        
+        data = json.load(f)
 
-        output = output.decode("utf8",).split("\n")
+        breach = data["targets"][0]["data"][0]
+        count = len(breach)
 
-        count = 0
-        start_count = 0
-        end_count = 0
-        breach = []
-
-        ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
-
-        for line in output:
-            splitted_line = line.split(">")[-1]
-
-            if 'Showing results for' in splitted_line:
-                start_count = count + 1
-            if '_____' in splitted_line:
-                if start_count > end_count:
-                    end_count = count-1
-            count += 1
-
-        for i in range(start_count, end_count):
-            breach.append(ansi_escape.sub('', output[i].split(">")[-1]))
-
-        if len(breach) > 0:
-            response = f"Found {len(breach)} informations leak according " \
+        if count > 0:
+            response = f"Found {count} informations leak according " \
                         "to leaklookup page\nHeres a few random website :\n"
             for index, leak in enumerate(breach):
                 if index < 6:
-                    response += f"{leak}\n"
+                    breach_site = leak.split("LEAKLOOKUP_PUB:")[1]
+                    response += f"{breach_site}\n"
         else:
             response = "No informations seems to have leaked according " \
                        "to leaklookup page.\nCongrats!"
