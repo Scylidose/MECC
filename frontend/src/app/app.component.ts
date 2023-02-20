@@ -23,7 +23,8 @@ export class AppComponent {
 
  constructor(private chatbotApi: ChatbotApiService, private router: Router, private _sanitizer: DomSanitizer) { }
 
- @ViewChild('chatListContainer') list?: ElementRef<HTMLDivElement>;
+ @ViewChild('chatListContainer') chatlist?: ElementRef<HTMLDivElement>;
+ @ViewChild('videoListContainer') videolist?: ElementRef<HTMLDivElement>;
 
  chatInputMessage: string = "";
  human = {
@@ -38,11 +39,13 @@ export class AppComponent {
     quiz_result: Array<string>,
     score: any,
     topic_list: Array<string>,
+    user_answer: Array<string>,
     true_answer: Array<string>
   } = {
     quiz_result: [],
     score: {},
     topic_list: [],
+    user_answer: [],
     true_answer: []
   }
 
@@ -193,7 +196,10 @@ getId(url: string) {
     : null;
 }
  scrollToBottom() {
-   const maxScroll = this.list?.nativeElement.scrollHeight;
-   this.list?.nativeElement.scrollTo({top: maxScroll, behavior: 'smooth'});
+   const maxChatScroll = this.chatlist?.nativeElement.scrollHeight;
+   this.chatlist?.nativeElement.scrollTo({top: maxChatScroll, behavior: 'smooth'});
+
+   const maxVideoScroll = this.videolist?.nativeElement.scrollHeight;
+   this.videolist?.nativeElement.scrollTo({top: maxVideoScroll, behavior: 'smooth'});
  }
 }
