@@ -1,10 +1,5 @@
 
 <h1 align="center">
-  <br>
-
-  <img width="317" alt="Capture d’écran 2023-01-22 à 16 43 06" src="https://user-images.githubusercontent.com/28122432/213942189-b2e31bf3-9d14-4f8a-9d3d-7d92357e4ce9.png">
-
-  <br>
   MECC
   <br>
 </h1>
@@ -21,16 +16,28 @@
 <h2 align="center">If available, you can discuss with MECC <a href="https://mecc.herokuapp.com/">here</a>.</h2>
 
 <h1 align="center">
-<img width="529" alt="MECC image" src="https://user-images.githubusercontent.com/28122432/217105313-b49e15b3-7a12-4c39-bc2e-0b9a4e3195c3.png">
+<img width="800" alt="MECC image" src="https://user-images.githubusercontent.com/28122432/219983501-d92fb29f-521b-4962-b754-cd751bdbb223.png">
 </h1>
 
 ## Key Features
 
-* Take a quiz to see how much you know about cybersecurity and see your weaknesses.
-* Cybersecurity teacher on various themes.
-* Text and video capsule to learn more about cybersecurity.
-* Senzibilization on data shared online.
-* Display usefull ressources about protecting personal data.
+<ul>
+  <li><h3>Display usefull ressources about protecting personal data.</h3></li>
+  <img width="1244" alt="Capture d’écran 2023-02-19 à 19 05 47" src="https://user-images.githubusercontent.com/28122432/219983676-b87a311a-d376-4cb6-b09f-64cefb22e41f.png">
+
+  <li><h3>Take a quiz to see how much you know about cybersecurity and see your weaknesses.</h3></li>
+  <img width="1241" alt="Capture d’écran 2023-02-19 à 19 06 59" src="https://user-images.githubusercontent.com/28122432/219983719-f1c5f71f-86bc-4261-912c-1d2fb9787fc8.png">
+
+  <li><h3>Cybersecurity teacher on various themes.</h3></li>
+
+  <li><h3>Text and video capsule to learn more about cybersecurity.</h3></li>
+      <img width="1253" alt="Capture d’écran 2023-02-19 à 18 57 57" src="https://user-images.githubusercontent.com/28122432/219983683-71d7bbfe-a166-4180-ad33-5fb197c24da8.png">
+
+  <li><h3>Senzibilization on data shared online.</h3></li>
+  <img width="1257" alt="Capture d’écran 2023-02-19 à 19 16 46" src="https://user-images.githubusercontent.com/28122432/219984199-63a36e89-464a-4e5c-8f4f-db53c3498977.png">
+
+  
+</ul>
 
 ## How To Use
 
