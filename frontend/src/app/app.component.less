@@ -1,9 +1,11 @@
-@user-color: linear-gradient(to right,#b6f492,#338b93);
-@user-hover-color: linear-gradient(to right,#8fc172,#1c4e52);
+@user-color: rgb(149, 0, 199);
+@user-hover-color: rgb(115, 2, 152);
 
-@bot-color: linear-gradient(109.6deg,#05545e 16%,#bbbbbb 91.1%);
+@bot-color:rgb(56, 51, 209);
 
-@primary-color: #f1f1f1;
+@text-color: white;
+
+@primary-color: linear-gradient(to bottom, rgb(149, 0, 199) 4.7%, rgb(130, 0, 226) 22.9%, rgb(95, 0, 199) 43.2%, rgb(70, 0, 199) 63.9%, rgb(5, 0, 199) 85.1%, rgb(0, 95, 199) 106.8%);
 @1px-border: 1px solid #ccc;
 @2px-border: 2px solid #ccc;
 
@@ -26,7 +28,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: @primary-color;
+	background-color: #f1f1f1;
 	box-sizing: border-box;
 	&:last-child {
 		border-right: none;
@@ -155,26 +157,30 @@
 	}
 }
 
-.quick-replies-item {
-	width: 100%;
-	display: inline;
-	flex-direction: row;
-	.quick-replies-body {
-		background: @user-color;
-		padding: 12px 24px;
-		border-radius: 30px;
-		color: white;
-		width: 100%;
-		margin: 2px;
-    &:hover {
-      background: @user-hover-color;
+.quick-replies-list {
+  padding-right: 5px;
+  .quick-replies-item {
+    width: 100%;
+    display: inline;
+    flex-direction: row;
+    .quick-replies-body {
+      background: @user-color;
+      padding: 12px 24px;
+      border-radius: 5px;
+      color: @text-color;
+      width: 100%;
+      margin: 2px;
+      &:hover {
+        cursor: pointer;
+        background: @user-hover-color;
+      }
     }
-	}
+  }
 }
 
 #chatbot {
 	border: @2px-border;
-	background-color: @primary-color;
+	background: @primary-color;
 	border-radius: 5px;
 	padding: 10px;
 	margin: auto 10px;
@@ -206,7 +212,7 @@
 			margin: auto 8px;
 			padding: 12px 24px;
 			border-radius: 30px;
-			color: white;
+			color: @text-color;
 			display: flex;
 			flex-direction: row;
 			white-space: pre-line;
@@ -216,7 +222,7 @@
 		margin-right: auto;
 		margin-left: 8px;
 		#message-body {
-			color: white;
+			color: @text-color;
 			background: @bot-color;
 			margin-left: -10px;
 			border-radius: 30px;
@@ -228,7 +234,7 @@
 		flex-direction: row-reverse;
 		#message-body {
 			background: @user-color;
-			color: white;
+			color: @text-color;
 			margin-right: -10px;
 			text-align: right;
 			border-radius: 30px;
@@ -248,7 +254,7 @@
 	}
 	#send-button {
 		background: @user-color;
-		color: white;
+		color: @text-color;
 		font-weight: bold;
 		padding: 14px 20px;
 		margin: 8px 5px;
