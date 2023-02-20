@@ -1,8 +1,6 @@
 import subprocess as sub
-from emailrep import EmailRep
-import random
-import re
 import json
+
 
 class DataLeakMECC():
 
@@ -29,9 +27,9 @@ class DataLeakMECC():
                          "/app/backend/OUTPUT_JSON.json"])
         except sub.CalledProcessError as e:
             output = e.output
-    
+
         f = open('/app/backend/OUTPUT_JSON.json')
-        
+
         data = json.load(f)
 
         breach = data["targets"][0]["data"][0]

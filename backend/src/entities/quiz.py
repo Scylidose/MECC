@@ -40,9 +40,9 @@ class QuizMECC:
         }
 
         results = {
-            "score":{},
+            "score": {},
             "topic_list": [],
-            "quiz_result":[],
+            "quiz_result": [],
             "true_answer": []
         }
         quiz_result = []
