@@ -23,7 +23,9 @@ export class AppComponent {
 
  constructor(private chatbotApi: ChatbotApiService, private router: Router, private _sanitizer: DomSanitizer) { }
 
- @ViewChild('chatListContainer') list?: ElementRef<HTMLDivElement>;
+ @ViewChild('chatListContainer') chatlist?: ElementRef<HTMLDivElement>;
+ @ViewChild('videoListContainer') videolist?: ElementRef<HTMLDivElement>;
+
  chatInputMessage: string = "";
  human = {
     id: 1
@@ -32,6 +34,29 @@ export class AppComponent {
   bot = {
     id: 2
   }
+
+  chatQuizResults: {
+    quiz_result: Array<string>,
+    score: any,
+    topic_list: Array<string>,
+    user_answer: Array<string>,
+    true_answer: Array<string>
+  } = {
+    quiz_result: [],
+    score: {},
+    topic_list: [],
+    user_answer: [],
+    true_answer: []
+  }
+
+  chatYoutube: {
+    message: string
+  }[] = []
+
+  chatUsefulLink: {
+    link: string,
+    title: string
+  }[] = []
 
  chatMessages: {
   user: any,
@@ -46,6 +71,27 @@ export class AppComponent {
     type: "text"
   }
 ];
+
+ ngOnInit() {
+
+  var useful_link = [
+    {
+      link:"https://safety.google/security/security-tips/", title:"Google Safety Center"
+    },
+    {
+      link:"https://staysafeonline.org/resources/", title:"Stay Safe Online"
+    },
+    {
+      link:"https://www.securityroundtable.org/", title: "Cybersecurity Best Practices"
+    },
+    {
+      link:"https://cyber.gc.ca/en", title:"Canadian Centre for Cyber Security"
+    }
+  ]
+
+  this.chatUsefulLink = useful_link;
+
+ }
 
  ngAfterViewChecked() {
    this.scrollToBottom()
@@ -70,8 +116,10 @@ export class AppComponent {
       error => alert(error.message)
     );
   this.chatInputMessage = ""
+
   this.scrollToBottom()
 }
+
 replaceInput(quick_reply: string) { 
   this.chatbot.messages = [{"df_type":"text", "text":quick_reply}];
   this.chatMessages.push({
@@ -80,6 +128,7 @@ replaceInput(quick_reply: string) {
     user: this.human,
     type: "text"
   });
+
   this.chatbotApi.send(this.chatbot).subscribe(data => {
     this.receive(data.messages);
   });
@@ -89,9 +138,18 @@ replaceInput(quick_reply: string) {
       () => this.router.navigate(['/']),
       error => alert(error.message)
     );
-  this.chatInputMessage = ""
-  this.scrollToBottom()
+  this.chatInputMessage = "";
+
+  this.scrollToBottom();
+
+  if(quick_reply == "Yes, teach me !" ||
+     quick_reply == "Im not interested"){
+    this.chatbotApi.getResults().subscribe(data => {
+      this.chatQuizResults = data
+    });
+  }
  };
+
 
 receive(messages: Array<string>) {
   for(let i=0; i<messages.length; i++){
@@ -104,14 +162,18 @@ receive(messages: Array<string>) {
           const videoId = this.getId(dict_message['text']);
           var videoURL = '//www.youtube.com/embed/'+ videoId;
           dict_message['text'] = this._sanitizer.bypassSecurityTrustResourceUrl(videoURL);
-          dict_message['df_type'] = "youtube_link"
+          
+          this.chatYoutube.push({
+            message: dict_message['text']
+          })
+        } else {
+          this.chatMessages.push({
+            message: dict_message['text'],
+            quick_replies: [],
+            user: this.bot,
+            type: dict_message['df_type']
+          });
         }
-        this.chatMessages.push({
-          message: dict_message['text'],
-          quick_replies: [],
-          user: this.bot,
-          type: dict_message['df_type']
-        });
       } else if(dict_message['df_type'] == 'quick_replies'){
         this.chatMessages.push({
           message: dict_message['text'],
@@ -134,7 +196,10 @@ getId(url: string) {
     : null;
 }
  scrollToBottom() {
-   const maxScroll = this.list?.nativeElement.scrollHeight;
-   this.list?.nativeElement.scrollTo({top: maxScroll, behavior: 'smooth'});
+   const maxChatScroll = this.chatlist?.nativeElement.scrollHeight;
+   this.chatlist?.nativeElement.scrollTo({top: maxChatScroll, behavior: 'smooth'});
+
+   const maxVideoScroll = this.videolist?.nativeElement.scrollHeight;
+   this.videolist?.nativeElement.scrollTo({top: maxVideoScroll, behavior: 'smooth'});
  }
 }

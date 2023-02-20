@@ -10,7 +10,7 @@ export class ChatbotApiService {
   private url: string;
   
   constructor(private http: HttpClient) {
-    this.url = `${API_URL}/message`;
+    this.url = `${API_URL}`;
   }
 
   private static _handleError(err: HttpErrorResponse | any) {
@@ -25,11 +25,16 @@ export class ChatbotApiService {
   }
 
   public send(chatbot: Chatbot): Observable<any> {
-    return this.http.post(this.url, chatbot);
+    return this.http.post(this.url+'/message', chatbot);
   }
 
   saveChatbot(chatbot: Chatbot): Observable<any> {
     return this.http
-      .post(this.url, chatbot);
+      .post(this.url+'/message', chatbot);
+  }
+
+  getResults(): Observable<any> {
+    return this.http
+      .get(this.url+'/quiz_results');
   }
 }
