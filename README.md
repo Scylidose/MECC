@@ -1,4 +1,6 @@
-# Mecc
+# MECC
+## Miscellaneous Educational Cybersecurity Chatbot.
+### Specialized chatbot for cybersecurity education and sensibilization.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
 
