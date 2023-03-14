@@ -3,6 +3,11 @@
   MECC
   <br>
 </h1>
+<p align="center">
+	<img src="https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white"> <img src="https://img.shields.io/badge/less-2B4C80?style=for-the-badge&logo=less&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"> <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"><br>
+<img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue"> <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white"> <img src="https://img.shields.io/badge/dialogflow-FF9800?style=for-the-badge&logo=dialogflow&logoColor=white"><br>
+ <img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white">
+</p>
 
 <h3 align="center">Miscellaneous Educational Cybersecurity Chatbot.</h3>
 <h4 align="center">Specialized chatbot for cybersecurity education and sensibilization.</h4>
