@@ -1,4 +1,3 @@
-
 <h1 align="center">
   MECC
   <br>
@@ -13,7 +12,8 @@
   <a href="#license">License</a>
 </p>
 
-<h2 align="center">If available, you can discuss with MECC <a href="https://mecc.herokuapp.com/">here</a>.</h2>
+<h2 align="center">If not 
+available, you can discuss with MECC <a href="https://mecc.herokuapp.com/">here</a>.</h2>
 
 <h1 align="center">
 <img width="800" alt="MECC image" src="https://user-images.githubusercontent.com/28122432/220011878-d60605aa-b438-4d79-92f8-85af25ab05fd.png">
@@ -31,27 +31,26 @@
   <li><h3>Cybersecurity teacher on various themes.</h3></li>
 
   <li><h3>Text and video capsule to learn more about cybersecurity.</h3></li>
-  
+
   <img width="1253" alt="Capture d’écran 2023-02-19 à 18 57 57" src="https://user-images.githubusercontent.com/28122432/220011878-d60605aa-b438-4d79-92f8-85af25ab05fd.png">
 
   <li><h3>Senzibilization on data shared online.</h3></li>
   <img width="1257" alt="Capture d’écran 2023-02-19 à 19 16 46" src="https://user-images.githubusercontent.com/28122432/219984199-63a36e89-464a-4e5c-8f4f-db53c3498977.png">
 
-  
 </ul>
 
 ## How To Use
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. 
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer.
 
 ### Setting up environment variable
 
 Create an `.env` file in the `backend/` folder based on the `.env.template` file.
 
-You have to define : 
+You have to define :
 
 - DIALOGFLOW_PROJECT_ID -> ID of the dialogflow app for your chatbot
-- DIALOGFLOW_SESSION_ID -> Random string 
+- DIALOGFLOW_SESSION_ID -> Random string
 - DIALOGFLOW_LANGUAGE_CODE -> Set up to the preferred language
 
 Learn more [here](https://cloud.google.com/dialogflow/es/docs/quick/setup?hl=fr)
